@@ -1,28 +1,24 @@
+""" BÀI 10: SẮP XẾP DANH SÁCH THEO TẦN SỐ XUẤT HIỆN (SORTING FREQUENCY)
+Nhập vào một dãy số và hãy sắp xếp dãy số sao cho:
++ Số nào xuất hiện nhiều lần hơn thì đứng trước
++ Nếu số lần xuất hiện bằng nhau thì số nhỏ hơn đứng trước
+
+VD1: 1, 1, 2, 2, 2, 3 => 2, 2, 2, 1, 1, 3
+VD2: 5, 5, 4, 4, 6 => 4, 4, 5, 5, 6
+"""
+
 from collections import Counter
 
-
 def sort_by_frequency(nums):
-    # Bước 1: Đếm số lần xuất hiện của mỗi phần tử
-    # Ví dụ: {1: 2, 2: 3, 3: 1}
     counts = Counter(nums)
-
-    # Bước 2: Sắp xếp danh sách với key tùy chỉnh
-    # -counts[x]: Tần suất giảm dần (dùng dấu âm để đảo ngược thứ tự tăng dần của sort)
-    # x: Giá trị tăng dần
     nums.sort(key=lambda x: (-counts[x], x))
 
-    return nums
+    final_nums = [str(item) for item in nums]
+    return ", ".join(final_nums)
 
+input_str = input("Enter list of numbers (cách nhau bởi dấu phẩy hoặc khoảng trắng): ")
+clean_input = input_str.replace(',', ' ')
+nums = [int(x) for x in clean_input.split()]
 
-# --- Xử lý Nhập liệu ---
-try:
-    input_str = input("Nhập dãy số (cách nhau bởi dấu phẩy hoặc khoảng trắng): ")
-    # Thay thế dấu phẩy bằng khoảng trắng để dễ split
-    clean_input = input_str.replace(',', ' ')
-    nums = [int(x) for x in clean_input.split()]
-
-    result = sort_by_frequency(nums)
-    print(f"Output: {', '.join(map(str, result))}")
-
-except ValueError:
-    print("Vui lòng nhập các số nguyên hợp lệ.")
+result = sort_by_frequency(nums)
+print(f"Sorting numbers by frequency: {result}")

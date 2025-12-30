@@ -11,14 +11,14 @@ def longest_common_prefix_sorting(strs):
     if not strs:
         return ""
 
-    # Sắp xếp danh sách theo thứ tự alphabet
+    # Sort by alphabet
     strs.sort()
 
     first = strs[0]
     last = strs[-1]
     result = ""
 
-    # Chỉ cần so sánh từ đầu và từ cuối
+    # Phần tử khác nhau nhất chỉ có ở đầu hoặc ở cuối
     for i in range(min(len(first), len(last))):
         if first[i] == last[i]:
             result += first[i]
@@ -27,6 +27,13 @@ def longest_common_prefix_sorting(strs):
 
     return result
 
+string_input = input("Enter array of string with space: ")
+string_array_input = string_input.strip().split(" ")
 
-# Chạy thử
-print(longest_common_prefix_sorting(["flower", "flow", "flight"]))  # Output: ""
+array_input = []
+for item in string_array_input:
+    item = item.strip()
+    if item != "":
+        array_input.append(item)
+
+print(f"Longest common prefix is: {longest_common_prefix_sorting(array_input)}")
