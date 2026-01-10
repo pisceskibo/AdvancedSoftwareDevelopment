@@ -5,9 +5,9 @@ Cho danh sách các số thực, hãy tính các giá trị sau:
 + Độ lệch chuẩn tính bằng căn bậc hai của phương sai
 """
 
-# Tìm giá trị trung bình
 import math
 
+# Tìm giá trị trung bình
 def mean(s):
     if len(s) == 0:
         return 0
